@@ -7,7 +7,7 @@
 
 A web application where students submit support requests (academic, financial, dormitory, health…) and follow their progress, while the Student Affairs Office receives, processes, replies to and reports on every request. Plain PHP 8 + MySQL, no framework.
 
-Course project for PHP Programming at the University of Labour and Social Affairs (Campus II), topic 63. Built by **Nguyen Huu An** (requirements, database design, UI, code, security hardening, testing).
+Course project for PHP Programming at the University of Labour and Social Affairs (Campus II), topic 63. Built by **An Nguyen Huu (Aaron Nguyen)** (requirements, database design, UI, code, security hardening, testing).
 
 ![Home page](docs/screenshots/home.png)
 
