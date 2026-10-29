@@ -1,0 +1,7 @@
+# Bỏ qua toàn bộ tệp sinh viên tải lên, chỉ giữ lại thư mục và các tệp cấu hình bảo vệ
+*
+!.gitignore
+!.htaccess
+!attachments/
+attachments/*
+!attachments/.htaccess

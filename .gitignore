@@ -1,0 +1,7 @@
+# Cấu hình riêng của từng máy (mật khẩu DB, SMTP)
+config.local.php
+# Nhật ký chạy
+logs/*
+!logs/.gitkeep
+# Docker demo
+!docker/config.local.php

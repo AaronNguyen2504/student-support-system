@@ -1,0 +1,26 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  lint-and-smoke-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: PHP syntax check
+        run: find . -name '*.php' -not -path './lib/*' -print0 | xargs -0 -n1 php -l
+      - name: Start app + database (same setup as Codespaces)
+        run: docker compose up -d --build
+      - name: Smoke test pages
+        run: |
+          for i in $(seq 1 30); do curl -fsS http://localhost:8080/ -o home.html && break; sleep 3; done
+          grep -q "Hỗ Trợ Sinh Viên" home.html
+          curl -fsS http://localhost:8080/user/login.php | grep -q "csrf"
+          curl -fsS http://localhost:8080/admin/login.php -o /dev/null
+          test "$(curl -s -o /dev/null -w '%{http_code}' http://localhost:8080/config.php)" = "403"
+      - name: Logs on failure
+        if: failure()
+        run: docker compose logs
